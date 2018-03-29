@@ -12,6 +12,10 @@ app.config['DEBUG'] = True
 signup_form = """
 <!doctype html>
 <html>
+<head>
+    <style>
+        .error{color:red;}
+    </style>
     <body>
         <h1>Signup</h1>
         <form action="/welcome" method="post">
@@ -19,10 +23,10 @@ signup_form = """
             <input id="Username" type="text" name="Username" />
             <br>
             <label for="Password">Password:</label>
-            <input id="Password" type="text" name="Password" />
+            <input id="Password" type="password" name="Password" />
             <br>
             <label for="VerifyPassword">Verify Password:</label>
-            <input id="VerifyPassword" type="text" name="VerifyPassword" />
+            <input id="VerifyPassword" type="password" name="VerifyPassword" />
             <br>
             <label for="email">Email (not required):</label>
             <input id="email" type="text" name="email" />
@@ -36,6 +40,44 @@ signup_form = """
 @app.route("/")
 def index():
     return signup_form
+
+@app.route("/", methods=["GET","POST"])
+def verify_signup():
+
+    username = request.form["Username"]
+    password = request.form["Password"]
+    password2 = request.form["VerifyPassword"]
+    email = request.form["email"]
+
+    username_error = ''
+    password_error = ''
+    email_error = ''
+
+    if len(username) == 0:
+        username_error = "Not a valid Username."
+    elif ' ' in username:
+        username_error = "Not a valid Username."
+    elif len(username) > 20:
+        username_error = "Not a valid Username."
+    elif len(username) < 3:
+        username_error = "Not a valid Username."
+
+    if len(password) == 0:
+        password_error = "Not a valid Password."
+    elif ' ' in username:
+        password_error = "Not a valid Password."
+    elif len(password) > 20:
+        password_error = "Not a valid Password."
+    elif len(password) < 3:
+        password_error = "Not a valid Password."
+
+    if password != password2:
+        password2_error = "Passwords do not match."
+
+    if not username_error and not password_error and not password2_error: 
+        return redirect('/welcome')
+    else:
+    
 
 @app.route("/welcome", methods = ["GET", "POST"])
 def welcome():
