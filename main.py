@@ -115,11 +115,12 @@ def verify_signup():
         #password = ''
         password2 = ''
 
-    if password != password2:
-        password_error = "Passwords must match."
-        password2_error = "Passwords must match."
-        password = ''
-        password2 = ''
+    if not password_error and not password2_error:
+        if password != password2:
+            password_error = "Passwords must match."
+            password2_error = "Passwords must match."
+            password = ''
+            password2 = ''
        
 
     #validations for email
