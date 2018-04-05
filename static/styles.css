@@ -10,7 +10,7 @@ body {
     width: 50%;
 }
 
-/* the entire form */
+/* entire form */
 
 form {
     background-color: white;
@@ -26,7 +26,7 @@ form {
     border: inset 1px solid #DDD;
 }
 
-/* makes the boxes shift to next line */
+/* makes boxes shift to next line */
 
 .form_label {
     display: block;
@@ -54,13 +54,13 @@ input {
 
 .error {
     color: crimson;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-    line-height: 1rem;
+    font-size: 1em;
+    margin-top: 0.5em;
+    line-height: 1em;
 }
 
 .error:last-of-type {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5em;
 }
 
 /* submit button */
@@ -69,7 +69,7 @@ input {
     margin-top: 1em;
     display: block;
     width: auto;
-    padding: 0.7rem 1rem; 
+    padding: 0.7em 1em; 
     background-color: purple;
     border: 0;
     color: #FFFFFF; 
